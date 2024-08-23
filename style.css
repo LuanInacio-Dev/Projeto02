@@ -1,0 +1,109 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(imgback.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;/*Ultiliza toda tela*/
+    display: flex;/*Tudo vai ficar organizado  ao lado do outro*/
+    justify-content: center;
+    align-items: center;/*Onde eu alinho todos os itens*/
+    min-height: 100vh;/*Altura min de um elemento*/
+   /* background: #151F28;Cor*/
+    
+}
+header{
+    
+    position: fixed;
+    width:100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content:space-between ;
+    background:black;
+    transition: all .50s ease;
+}
+
+.logo {
+    
+    width: 20%;
+    position: absolute;
+    z-index: 99;
+    margin-top: 10px;
+   
+}
+@media (max-width:1243px) {
+    .logo {
+     
+        width: 20%;
+     
+    }
+}
+
+@media (max-width: 600px) {
+    .logo {
+       
+      
+        width: 10%;
+    }  
+}
+
+@media (max-width: 400px) {
+    .logo {
+       
+        width: 10%;
+        
+    }
+}
+
+.box:hover{
+    animation-play-state: paused;/*Onde quando passamos o mouse em cima pausa*/
+    
+}
+.box {
+    position: relative;/*A frente de tudo*/
+    width: 200px;/*altura*/
+    height: 300px;/*Largura*/
+    transform-style: preserve-3d;/*Aqui onde faz o formao 3D*/
+    transform: perspective(1000px);/*Onde faz ficar de frente*/
+    animation: animate 30s linear infinite;
+}
+@keyframes animate {/*Configuração de rotação pra ficar girando*/
+    0%{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100%{
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+.box span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(240px);
+}
+
+.box span::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+.box span img{
+   position: absolute;
+   top: 0;
+    left: 0;
+    width: 100%;
+   height: 100%;
+   object-fit: cover;/*redimensionado para caber em seu contêiner.*/
+}
